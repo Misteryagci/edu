@@ -1,2 +1,0 @@
-# edu
-school works
