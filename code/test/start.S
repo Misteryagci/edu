@@ -146,6 +146,7 @@ Yield:
 	j	$31
 	.end Yield
 
+/*Appel système PutChar*/
 
 	.globl PutChar
 	.ent	PutChar
@@ -154,6 +155,37 @@ PutChar:
 	syscall
 	j	$31
 	.end PutChar
+
+/*Appel système PutString*/
+
+	.globl PutString
+	.ent	PutString
+PutString:
+	addiu $2,$0,SC_PutString
+	syscall
+	j	$31
+	.end PutString
+
+/*Appel système GetChar*/
+
+	.globl GetChar
+	.ent	GetChar
+GetChar:
+	addiu $2,$0,SC_GetChar
+	syscall
+	j	$31
+
+/*Appel système GetString*/
+
+	.globl GetString
+	.ent	GetString
+GetString:
+	addiu $2,$0,SC_GetString
+	syscall
+	j	$31
+	.end GetString
+
+
 
 /* dummy function to keep gcc happy */
         .globl  __main

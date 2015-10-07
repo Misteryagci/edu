@@ -27,6 +27,10 @@
 #include "synchconsole.h"
 #include "../machine/machine.h"
 
+
+/*
+	La fonction copie une chaîne caractère par caractère du monde utilisateur (MIPS) vers le monde noyau
+*/
 int copyStringFromMachine(int from, char* to,unsigned int size)
 {
 	to =  (char *)(malloc (sizeof(char)*(size+1)));
@@ -42,7 +46,19 @@ int copyStringFromMachine(int from, char* to,unsigned int size)
 		else
 			break;
 	}
+	if (to == NULL)
+		return 0;
+	return 1;
 }
+/*
+	La fonction copie une chaîne de caractères du monde noyau vers le monde utilisateur (MIPS)
+*/
+int copyStringToMachine(char* from,int to,unsigned int size)
+{
+
+}
+
+
 
 
 //----------------------------------------------------------------------
@@ -106,10 +122,49 @@ ExceptionHandler (ExceptionType which)
 		case SC_PutChar:
 		  {
 		    DEBUG ('s', "PutChar\n");
-		    
+		    synchconsole->SynchPutChar((char)machine->ReadRegister(4));
 		    break;
 		  }
 		#endif
+		#ifdef CHANGED
+		case SC_PutString:
+		  {
+		    DEBUG ('s', "PutString\n");
+		    //La définition de la fonction PutString
+		    char* res;
+		    char* from = (char*)(malloc(sizeof(char)*MAX_STRING_SIZE));
+		    int i = 0; //Permet de parcourir la chaîne de entrée 
+		    do {
+		     		char c = (char)(machine->ReadRegister(4));
+		     		from[i] = c;
+		     		i++;
+		    }
+		    while((c != '\0') && (c != '\n'));
+		    
+		    int aux = copyStringFromMachine((int)from[0],res,MAX_STRING_SIZE); //A vérifier
+		    if (i == 1) //Si la copie est réussi
+		    {
+		    	synchconsole->SynchPutString(res);
+		    }
+		    break;
+		  }
+		#endif
+		#ifdef CHANGED
+		case SC_GetChar:
+		{
+			DEBUG ('s', 'GetChar');
+			synchconsole->PutChar(machine->ReadRegister(2)); //Cas fin de fichier n'est pas traité
+			break;
+		}
+		#endif
+		#ifdef CHANGED
+		case SC_GetString:
+		{
+			DEBUG ('s', 'GetString');
+			char * c = (char *)(malloc(sizeof(char)*MAX_STRING_SIZE));
+			break;	
+		}
+		#endif 
 		default:
 		  {
 		    printf("Unimplemented system call %d\n", type);

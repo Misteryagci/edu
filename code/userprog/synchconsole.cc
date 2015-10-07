@@ -29,10 +29,8 @@ SynchConsole::~SynchConsole()
 }
 void SynchConsole::SynchPutChar(int ch)
 {
-	
 	console->PutChar(ch);
 	writeDone->P ();
-
 }
 
 int SynchConsole::SynchGetChar()
@@ -50,9 +48,17 @@ void SynchConsole::SynchPutString(const char s[])
 	}
 }
 
-
+#ifdef CHANGED
 void SynchConsole::SynchGetString(char* s, int n)
 {
-// ...
+	s = (char *)(malloc(sizeof(char)*n));
+	char c;
+	int i = 0;
+	do {
+		c = SynchGetChar();
+		s[i] = c;
+		i++;
+	}	while ((c != '\0') && (c != EOF));
 }
+#endif
 #endif // CHANGED

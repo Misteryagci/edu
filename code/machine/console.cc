@@ -219,3 +219,4 @@ Console::PutChar(int ch)
     interrupt->Schedule(ConsoleWriteDone, this, ConsoleTime,
 					ConsoleWriteInt);
 }
+

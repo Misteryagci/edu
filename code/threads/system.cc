@@ -222,10 +222,10 @@ Cleanup ()
 
 
 #ifdef USER_PROGRAM
-    delete machine;
     delete synchconsole;
-    machine = NULL;
     synchconsole = NULL;
+    delete machine;
+    machine = NULL;
 #endif
 
 #ifdef FILESYS_NEEDED

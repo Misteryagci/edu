@@ -93,21 +93,22 @@ ConsoleTest (const char *in, const char *out)
 	  ch = console->GetChar ();
 	 if (ch != '\n') {
 	  console->PutChar('<'); //On ajoute < avant le x (Action II.3)
- writeDone->P ();
+ 	writeDone->P ();
 	  console->PutChar (ch);	//echo it!
- writeDone->P ();
+ 	writeDone->P ();
 	  console->PutChar('>'); //On ajoute >après le  x (Action II.3)
-	  writeDone->P ();	// wait for write to finish
+	writeDone->P ();	// wait for write to finish
 	}
 	else
 	{
 	  console->PutChar('\n'); //On fait un retour à la ligne (Action II.3)
 	  writeDone->P ();	// wait for write to finish
 	}	  
-	if (ch == 'q') {
-	      printf (" Au revoir\n"); //Action II.1
-	      break;		// if q, quit
-	  }
+	if ((ch == 'q') || (ch == (EOF))) 
+	{
+	    printf (" Au revoir\n"); //Action II.1
+	   	break;		// if q, quit
+	}
       }
     delete console;
     delete readAvail;
@@ -118,26 +119,26 @@ ConsoleTest (const char *in, const char *out)
 void
 SynchConsoleTest (const char *in, const char *out)
 {
-char ch;
+	char ch;
 
-//SynchConsole *ts = new SynchConsole(in, out);
+	//SynchConsole *ts = new SynchConsole(in, out);
 
 
-while ((ch = synchconsole->SynchGetChar()) != EOF)
-{
-	if (ch != '\n')
+	while ((ch = synchconsole->SynchGetChar()) != EOF)
 	{
-		synchconsole->SynchPutChar('<');
-		synchconsole->SynchPutChar(ch);
-		synchconsole->SynchPutChar('>');
+		if (ch != '\n')
+		{
+			synchconsole->SynchPutChar('<');
+			synchconsole->SynchPutChar(ch);
+			synchconsole->SynchPutChar('>');
+		}
+		else
+			synchconsole->SynchPutChar('\n');
 	}
-	else
-		synchconsole->SynchPutChar('\n');
 
-	
+	fprintf(stderr, "EOF detected in SynchConsole!\n");
 }
-fprintf(stderr, "EOF detected in SynchConsole!\n");
-}
+
 #endif //CHANGED
 
 

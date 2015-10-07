@@ -7,6 +7,8 @@
 
 #ifndef SYSTEM_H
 #define SYSTEM_H
+#define MAX_STRING_SIZE 128
+
 
 #include "copyright.h"
 #include "utility.h"
