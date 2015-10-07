@@ -55,7 +55,11 @@ int copyStringFromMachine(int from, char* to,unsigned int size)
 */
 int copyStringToMachine(char* from,int to,unsigned int size)
 {
-
+   int i;
+   for(i=0;i<size-1 && from[i] !='\0';i++) {
+   		machine->mainMemory[(unsigned)(to+i)] = (char) from[i];
+  	}
+ 	machine->mainMemory[(unsigned)(to+i)] = '\0';
 }
 
 
@@ -161,7 +165,13 @@ ExceptionHandler (ExceptionType which)
 		case SC_GetString:
 		{
 			DEBUG ('s', 'GetString');
-			char * c = (char *)(malloc(sizeof(char)*MAX_STRING_SIZE));
+			 //adresse du resultat
+            char *to = (char *) machine->ReadRegister(4);
+            int size = (int) machine->ReadRegister(5);
+            char *buffer = new char[MAX_STRING_SIZE];
+            synchconsole->SynchGetString(buffer,size);
+           	copyStringToMachine(buffer,to,size);
+            delete [] buffer;
 			break;	
 		}
 		#endif 
