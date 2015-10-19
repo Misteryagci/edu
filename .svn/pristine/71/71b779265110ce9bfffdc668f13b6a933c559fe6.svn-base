@@ -1,0 +1,28 @@
+
+--Cette ligne, et les suivantes ci-dessous, seront ignorées--
+
+D    userprog/addrspace.o
+D    userprog/bitmap.o
+D    userprog/console.o
+M    userprog/exception.cc
+D    userprog/exception.o
+D    userprog/interrupt.o
+D    userprog/list.o
+D    userprog/machine.o
+D    userprog/main.o
+D    userprog/mipssim.o
+D    userprog/nachos
+D    userprog/progtest.o
+D    userprog/scheduler.o
+D    userprog/stats.o
+D    userprog/switch.o
+D    userprog/synch.o
+D    userprog/synchlist.o
+M    userprog/syscall.h
+D    userprog/sysdep.o
+D    userprog/system.o
+D    userprog/thread.o
+D    userprog/threadtest.o
+D    userprog/timer.o
+D    userprog/translate.o
+D    userprog/utility.o

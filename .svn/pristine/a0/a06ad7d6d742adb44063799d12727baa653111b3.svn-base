@@ -1,0 +1,8 @@
+[core]
+	repositoryformatversion = 0
+	filemode = true
+	bare = false
+	logallrefupdates = true
+[svn-remote "svn"]
+	url = file:///net/cremi/kyagci/hidden/JK5VTq/svnnachos
+	fetch = :refs/remotes/git-svn

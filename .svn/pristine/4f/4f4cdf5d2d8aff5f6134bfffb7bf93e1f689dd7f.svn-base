@@ -1,0 +1,41 @@
+r1
+  +empty_dir: attic
+  +empty_dir: branches
+  +file_prop: trunk/nachos.ps.gz svn:mime-type application/octet-stream
+r2
+  +empty_dir: trunk/naji
+r3
+r4
+r5
+r6
+  -empty_dir: trunk/code/userprog/synchconsole.cc
+  -empty_dir: trunk/code/userprog/synchconsole.h
+  +file_prop: trunk/devoir1.pdf svn:mime-type application/octet-stream
+r7
+r8
+r9
+  +file_prop: trunk/code/userprog/addrspace.o svn:mime-type application/octet-stream
+  +file_prop: trunk/code/userprog/bitmap.o svn:mime-type application/octet-stream
+  +file_prop: trunk/code/userprog/console.o svn:mime-type application/octet-stream
+  +file_prop: trunk/code/userprog/exception.o svn:mime-type application/octet-stream
+  +file_prop: trunk/code/userprog/interrupt.o svn:mime-type application/octet-stream
+  +file_prop: trunk/code/userprog/list.o svn:mime-type application/octet-stream
+  +file_prop: trunk/code/userprog/machine.o svn:mime-type application/octet-stream
+  +file_prop: trunk/code/userprog/main.o svn:mime-type application/octet-stream
+  +file_prop: trunk/code/userprog/mipssim.o svn:mime-type application/octet-stream
+  +file_prop: trunk/code/userprog/nachos svn:mime-type application/octet-stream
+  +file_prop: trunk/code/userprog/progtest.o svn:mime-type application/octet-stream
+  +file_prop: trunk/code/userprog/scheduler.o svn:mime-type application/octet-stream
+  +file_prop: trunk/code/userprog/stats.o svn:mime-type application/octet-stream
+  +file_prop: trunk/code/userprog/switch.o svn:mime-type application/octet-stream
+  +file_prop: trunk/code/userprog/synch.o svn:mime-type application/octet-stream
+  +file_prop: trunk/code/userprog/synchconsole.o svn:mime-type application/octet-stream
+  +file_prop: trunk/code/userprog/synchlist.o svn:mime-type application/octet-stream
+  +file_prop: trunk/code/userprog/sysdep.o svn:mime-type application/octet-stream
+  +file_prop: trunk/code/userprog/system.o svn:mime-type application/octet-stream
+  +file_prop: trunk/code/userprog/thread.o svn:mime-type application/octet-stream
+  +file_prop: trunk/code/userprog/threadtest.o svn:mime-type application/octet-stream
+  +file_prop: trunk/code/userprog/timer.o svn:mime-type application/octet-stream
+  +file_prop: trunk/code/userprog/translate.o svn:mime-type application/octet-stream
+  +file_prop: trunk/code/userprog/utility.o svn:mime-type application/octet-stream
+r10

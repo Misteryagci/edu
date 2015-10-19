@@ -1,0 +1,1327 @@
+
+filesys/directory.cc,283
+Directory::Directory(38,1569
+Directory::~Directory(51,1944
+Directory::FetchFrom(64,2277
+Directory::WriteBack(77,2683
+Directory::FindIndex(91,3158
+Directory::Find(109,3744
+Directory::Add(130,4378
+Directory::Remove(154,5117
+Directory::List(170,5512
+Directory::Print(184,5927
+
+filesys/filehdr.cc,220
+FileHeader::Allocate(42,1678
+FileHeader::Deallocate(62,2287
+FileHeader::FetchFrom(78,2774
+FileHeader::WriteBack(91,3158
+FileHeader::ByteToSector(107,3736
+FileHeader::FileLength(118,4045
+FileHeader::Print(130,4386
+
+filesys/filesys.cc,365
+#define FreeMapSector 57,2386
+#define DirectorySector 58,2412
+#define BitsInByte	63,2634
+#define FreeMapFileSize 64,2656
+#define NumDirEntries 65,2707
+#define DirectoryFileSize 66,2734
+FileSystem::FileSystem(81,3369
+FileSystem::Create(176,6880
+FileSystem::Open(229,8515
+FileSystem::Remove(259,9497
+FileSystem::List(297,10560
+FileSystem::Print(317,11120
+
+filesys/fstest.cc,233
+#define TransferSize 24,680
+Copy(32,976
+Print(78,2193
+#define FileName 111,3168
+#define Contents 112,3197
+#define ContentSize 113,3228
+#define FileSize 114,3266
+FileWrite(117,3326
+FileRead(145,4033
+PerformanceTest(173,4750
+
+filesys/openfile.cc,212
+OpenFile::OpenFile(29,1013
+OpenFile::~OpenFile(41,1366
+OpenFile::Seek(55,1770
+OpenFile::Read(74,2446
+OpenFile::Write(82,2595
+OpenFile::ReadAt(116,4006
+OpenFile::WriteAt(146,5030
+OpenFile::Length(193,6756
+
+filesys/synchdisk.cc,182
+DiskRequestDone 27,1067
+SynchDisk::SynchDisk(43,1538
+SynchDisk::~SynchDisk(56,1972
+SynchDisk::ReadSector(73,2446
+SynchDisk::WriteSector(91,3050
+SynchDisk::RequestDone(106,3546
+
+machine/console.cc,276
+static void ConsoleReadPoll(22,811
+static void ConsoleWriteDone(24,913
+int Console::stdin_busy;40,1635
+Console::Console(42,1661
+Console::~Console(74,2656
+Console::CheckCharAvail(104,3532
+Console::WriteDone(174,5258
+Console::GetChar(188,5672
+Console::PutChar(203,6036
+
+machine/disk.cc,372
+#define MagicNumber 23,908
+#define MagicSize 24,940
+#define DiskSize 26,972
+static void DiskDone(29,1103
+Disk::Disk(43,1734
+Disk::~Disk(76,2818
+PrintSector 87,3101
+Disk::ReadRequest(116,4109
+Disk::WriteRequest(136,4714
+Disk::HandleInterrupt 162,5594
+Disk::TimeToSeek(180,6252
+Disk::ModuloDiff(203,7050
+Disk::ComputeLatency(233,8266
+Disk::UpdateLast(262,9334
+
+machine/interrupt.cc,539
+static const char *intLevelNames[intLevelNames30,911
+static const char *intTypeNames[intTypeNames31,964
+PendingInterrupt::PendingInterrupt(45,1617
+Interrupt::Interrupt(61,2097
+Interrupt::~Interrupt(75,2490
+Interrupt::ChangeLevel(101,3371
+Interrupt::SetLevel(123,4022
+Interrupt::Enable(144,4692
+Interrupt::OneTick(159,5126
+Interrupt::YieldOnReturn(201,6511
+Interrupt::Idle(219,7109
+Interrupt::Halt(249,8301
+Interrupt::Schedule(273,9133
+Interrupt::CheckIfDue(299,10114
+PrintPending(357,11915
+Interrupt::DumpState(372,12379
+
+machine/machine.cc,436
+static const char* exceptionNames[exceptionNames16,504
+void CheckEndian(28,998
+    union checkit 30,1019
+        char charword[checkit::charword31,1039
+        unsigned int intword;checkit::intword32,1065
+Machine::Machine(55,1662
+Machine::~Machine(84,2397
+Machine::RaiseException(102,2974
+void Machine::Debugger(124,3864
+Machine::DumpState(171,5037
+int Machine::ReadRegister(209,6134
+void Machine::WriteRegister(215,6251
+
+machine/mipssim.cc,154
+Machine::Run(31,1067
+TypeToReg(66,2125
+Machine::OneInstruction(106,3596
+Machine::DelayedLoad(619,16710
+Instruction::Decode(633,17168
+Mult(679,18313
+
+machine/network.cc,234
+static void NetworkReadPoll(17,557
+static void NetworkSendDone(19,653
+Network::Network(26,974
+Network::~Network(50,1775
+Network::CheckPktAvail(60,2034
+Network::SendDone(90,2982
+Network::Send(103,3356
+Network::Receive(130,4201
+
+machine/stats.cc,58
+Statistics::Statistics(19,659
+Statistics::Print(34,1155
+
+machine/sysdep.cc,621
+PollFile(115,3891
+OpenForWrite(156,5100
+OpenForReadWrite(173,5527
+Read(187,5897
+ReadPartial(200,6258
+WriteFile(212,6573
+Lseek(224,6926
+Tell(236,7251
+Close(252,7638
+Unlink(264,7893
+OpenSocket(277,8306
+CloseSocket(293,8633
+InitSocketName(304,8915
+AssignNameToSocket(317,9319
+DeAssignNameToSocket(335,9937
+PollSocket(346,10263
+ReadFromSocket(356,10596
+SendToSocket(388,11580
+CallOnUserAbort(407,12137
+BlockUserAbort(418,12443
+UnBlockUserAbort(430,12699
+Delay(444,13072
+Abort(455,13320
+Exit(466,13539
+RandomInit(478,13880
+Random(489,14125
+AllocBoundedArray(507,14664
+DeallocBoundedArray(526,15229
+
+machine/timer.cc,121
+static void TimerHandler(27,1033
+Timer::Timer(44,1775
+Timer::TimerExpired(62,2396
+Timer::TimeOfNextInterrupt(79,2955
+
+machine/translate.cc,171
+WordToHost(42,1626
+ShortToHost(56,1959
+WordToMachine(68,2228
+ShortToMachine(71,2306
+Machine::ReadMem(88,2908
+Machine::WriteMem(138,4235
+Machine::Translate(187,5800
+
+network/nettest.cc,18
+MailTest(34,1179
+
+network/post.cc,487
+Mail::Mail(34,1231
+MailBox::MailBox(52,1771
+MailBox::~MailBox(65,2149
+PrintHeader(80,2602
+MailBox::Put(100,3328
+MailBox::Get(122,4109
+static void PostalHelper(150,5178
+static void ReadAvailHandler(152,5277
+static void WriteDoneHandler(154,5380
+PostOffice::PostOffice(176,6421
+PostOffice::~PostOffice(204,7432
+PostOffice::PostalDelivery(222,7960
+PostOffice::Send(262,9156
+PostOffice::Receive(309,10773
+PostOffice::IncomingPacket(326,11323
+PostOffice::PacketSent(342,11799
+
+threads/list.cc,249
+ListElement::ListElement 30,1136
+List::List 43,1561
+List::~List 58,2146
+List::Append 77,2722
+List::Prepend 106,3496
+List::Remove 131,4088
+List::Mapcar 147,4601
+List::IsEmpty 162,5047
+List::SortedInsert 186,5820
+List::SortedRemove 232,7105
+
+threads/main.cc,53
+#define MAIN15,611
+#undef MAIN17,647
+main 51,1603
+
+threads/scheduler.cc,203
+Scheduler::Scheduler 30,1175
+Scheduler::Halt 42,1492
+Scheduler::~Scheduler 52,1754
+Scheduler::ReadyToRun 66,2164
+Scheduler::FindNextToRun 83,2717
+Scheduler::Run 105,3477
+Scheduler::Print 164,5544
+
+threads/synch.cc,344
+Semaphore::Semaphore 36,1574
+Semaphore::~Semaphore 49,1995
+Semaphore::P 65,2504
+Semaphore::V 89,3310
+Lock::Lock 104,3798
+Lock::~Lock 111,3894
+Lock::Acquire 115,3918
+Lock::Release 121,3978
+Condition::Condition 127,4034
+Condition::~Condition 134,4140
+Condition::Wait 138,4174
+Condition::Signal 146,4284
+Condition::Broadcast 153,4394
+
+threads/synchlist.cc,141
+SynchList::SynchList 25,930
+SynchList::~SynchList 37,1316
+SynchList::Append 54,1788
+SynchList::Remove 71,2307
+SynchList::Mapcar 93,2897
+
+threads/system.cc,513
+Thread *currentThread;currentThread19,513
+Thread *threadToBeDestroyed;threadToBeDestroyed20,570
+Scheduler *scheduler;scheduler21,632
+Interrupt *interrupt;interrupt22,673
+Statistics *stats;stats23,716
+Timer *timer;timer24,759
+FileSystem *fileSystem;fileSystem28,866
+SynchDisk *synchDisk;synchDisk32,913
+Machine *machine;machine36,1007
+SynchConsole *synchconsole;synchconsole42,1107
+PostOffice *postOffice;postOffice48,1166
+TimerInterruptHandler 73,2207
+Initialize 91,2937
+Cleanup 210,5750
+
+threads/thread.cc,412
+#define STACK_FENCEPOST 28,1012
+Thread::Thread 40,1471
+Thread::~Thread 73,2422
+Thread::Start 105,3584
+Thread::CheckOverflow 135,4801
+Thread::Finish 162,5786
+Thread::Yield 198,7093
+Thread::Sleep 236,8564
+ThreadFinish 261,9415
+InterruptEnable 266,9477
+SetupThreadState 276,9731
+ThreadPrint 320,10959
+Thread::StackAllocate 339,11567
+Thread::SaveUserState 395,13653
+Thread::RestoreUserState 411,14245
+
+threads/threadtest.cc,41
+SimpleThread 25,866
+ThreadTest 44,1382
+
+threads/utility.cc,109
+static const char *enableFlags enableFlags20,716
+DebugInit 34,1234
+DebugIsEnabled 45,1539
+DEBUG 61,1984
+
+userprog/addrspace.cc,182
+SwapHeader 33,1284
+AddrSpace::AddrSpace 63,2719
+AddrSpace::~AddrSpace 132,5115
+AddrSpace::InitRegisters 151,5746
+AddrSpace::SaveState 182,6816
+AddrSpace::RestoreState 195,7190
+
+userprog/bitmap.cc,299
+#define BitsInByte 13,480
+#define BitsInWord 14,502
+BitMap::BitMap 24,869
+BitMap::~BitMap 38,1257
+BitMap::Mark 54,1643
+BitMap::Clear 68,2044
+BitMap::Test 82,2451
+BitMap::Find 102,3007
+BitMap::NumClear 120,3424
+BitMap::Print 139,3905
+BitMap::FetchFrom 158,4403
+BitMap::WriteBack 171,4785
+
+userprog/exception.cc,113
+int copyStringFromMachine(34,1196
+int copyStringToMachine(56,1601
+UpdatePC 75,2138
+ExceptionHandler 110,3254
+
+userprog/progtest.cc,256
+StartProcess 25,790
+static Console *console;console52,1546
+static Semaphore *readAvail;readAvail53,1571
+static Semaphore *writeDone;writeDone54,1600
+ReadAvailHandler 62,1868
+WriteDoneHandler 68,1950
+ConsoleTest 81,2312
+SynchConsoleTest 120,3275
+
+userprog/synchconsole.cc,397
+static Semaphore *readAvail;readAvail6,103
+static Semaphore *writeDone;writeDone7,132
+static void ReadAvailHandler(8,161
+static void WriteDoneHandler(13,241
+SynchConsole::SynchConsole(18,319
+SynchConsole::~SynchConsole(24,544
+void SynchConsole::SynchPutChar(30,633
+int SynchConsole::SynchGetChar(36,719
+void SynchConsole::SynchPutString(41,802
+void SynchConsole::SynchGetString(52,961
+
+bin/coff2flat.c,145
+#define MAIN15,553
+#undef MAIN17,589
+#define StackSize 31,887
+#define ReadStruct(32,937
+void Read(37,1039
+void Write(46,1217
+main 55,1391
+
+bin/coff2noff.c,206
+#define MAIN23,849
+#undef MAIN25,886
+WordToHost(45,1299
+ShortToHost(59,1632
+#define ReadStruct(70,1885
+char *noffFileName noffFileName72,1932
+void Read(75,1991
+void Write(85,2199
+int main 94,2373
+
+bin/d.c,131
+#define NULL	11,270
+int sptr;13,286
+int longdis 14,296
+char *regstrings[regstrings19,357
+#define R(27,594
+dump_ascii(30,623
+
+bin/disasm.c,762
+static FILE *fp;fp18,383
+static LDFILE *ldptr;ldptr19,400
+static SCNHDR texthead,20,422
+static SCNHDR texthead, rdatahead,20,422
+static SCNHDR texthead, rdatahead, datahead,20,422
+static SCNHDR texthead, rdatahead, datahead, sdatahead,20,422
+static SCNHDR texthead, rdatahead, datahead, sdatahead, sbsshead,20,422
+static SCNHDR texthead, rdatahead, datahead, sdatahead, sbsshead, bsshead;20,422
+static char filename[filename22,498
+static char self[self23,561
+char mem[mem25,618
+int TRACE,26,674
+int TRACE, Traptrace,26,674
+int TRACE, Traptrace, Regtrace;26,674
+int NROWS=27,706
+int pc;28,756
+main(32,789
+#define LOADSECTION(69,1422
+load_section(71,1470
+load_program(88,1870
+int *m_alloc(m_alloc140,3282
+disasm(148,3379
+dis1(162,3546
+
+bin/execute.c,877
+#define FAST	14,307
+#define true	15,322
+#define false	16,337
+int Reg[Reg23,427
+int HI,24,454
+int HI, LO;24,454
+int numjmpls;27,535
+int arch1cycles;28,549
+#define  b31(31,601
+#define cc_add(34,708
+#define cc_sub(40,857
+#define cc_logic(48,1072
+#define cc_mulscc(54,1149
+runprogram(61,1317
+u(378,8659
+ny(383,8740
+RS(391,8824
+RT(397,8857
+RD(403,8890
+IM(409,8923
+dump_reg(417,8961
+ilog2(447,9432
+#define NH 465,9831
+#define NNN 466,9849
+static int hists[hists468,9869
+int hoflo[hoflo469,9896
+int hoflo[NH], htotal[htotal469,9896
+void henters(471,9924
+hprint(478,10048
+int numadds=501,10475
+int addtable[addtable502,10527
+int subtable[subtable503,10549
+char fmt[fmt505,10572
+char fmt2[fmt2506,10592
+patable(508,10617
+printstatistics(533,10937
+#define NNNN	555,11471
+static int hist[hist557,11490
+henter(559,11514
+printhist(566,11579
+
+bin/main.c,723
+static FILE *fp;fp18,382
+static LDFILE *ldptr;ldptr19,399
+static SCNHDR texthead,20,421
+static SCNHDR texthead, rdatahead,20,421
+static SCNHDR texthead, rdatahead, datahead,20,421
+static SCNHDR texthead, rdatahead, datahead, sdatahead,20,421
+static SCNHDR texthead, rdatahead, datahead, sdatahead, sbsshead,20,421
+static SCNHDR texthead, rdatahead, datahead, sdatahead, sbsshead, bsshead;20,421
+static char filename[filename22,497
+static char self[self23,560
+char mem[mem25,617
+int TRACE,26,673
+int TRACE, Traptrace,26,673
+int TRACE, Traptrace, Regtrace;26,673
+int NROWS=27,705
+main(31,780
+char *string(string81,1781
+load_program(92,1909
+#define LOADSECTION(112,2282
+int *m_alloc(m_alloc160,3510
+
+bin/opstrings.c,69
+char *normalops[normalops9,231
+char *specialops[specialops76,788
+
+bin/out.c,889
+#define MAIN7,207
+#undef MAIN9,243
+#define read_struct(29,649
+#define MAXRELOCS 31,704
+#define MAXDATA 34,729
+struct data 36,752
+  long data[data37,766
+  struct reloc reloc[reloc38,788
+  int length;39,821
+  int relocs;40,835
+#define MAXSCNS 43,853
+#define MAXSYMS 44,872
+#define MAXSSPACE 45,892
+struct filehdr filehdr;47,917
+struct aouthdr aouthdr;48,941
+struct scnhdr scnhdr[scnhdr49,965
+struct data section[section50,996
+HDRR symhdr;51,1026
+EXTR symbols[symbols52,1039
+char sspace[sspace53,1062
+char *symbol_type[symbol_type55,1083
+char *storage_class[storage_class60,1269
+main(66,1540
+static column 148,3755
+static FILE *outfile outfile149,3774
+myprintf(153,3840
+mytab(174,4187
+mysetfile(184,4297
+#define printf 190,4339
+print_section(193,4379
+char *section_name[section_name224,5011
+char *reloc_type[reloc_type229,5135
+print_reloc(233,5223
+
+bin/system.c,137
+system_break(19,398
+system_trap(26,480
+#define	IOCPARM_MASK	89,1649
+char *u_to_int_addr(u_to_int_addr125,2367
+u_to_int_fd(133,2543
+
+test/halt.c,13
+main 16,496
+
+test/matmult.c,81
+#define Dim 12,274
+int A[A16,367
+int B[B17,384
+int C[C18,401
+main 21,423
+
+test/shell.c,11
+main 4,26
+
+test/sort.c,47
+#define N 12,291
+int A[A13,306
+main 16,389
+
+test/start.S,385
+__start:__start34,926
+Halt:Halt63,1840
+Exit:Exit71,1919
+Exec:Exec79,1998
+Join:Join87,2077
+Create:Create95,2160
+Open:Open103,2245
+Read:Read111,2324
+Write:Write119,2405
+Close:Close127,2489
+Fork:Fork135,2571
+Yield:Yield143,2652
+PutChar:PutChar153,2768
+PutString:PutString163,2896
+GetChar:GetChar173,3024
+GetString:GetString182,3138
+__main:__main193,3295
+
+threads/switch.S,329
+ThreadRoot:ThreadRoot72,2105
+SWITCH:SWITCH89,2520
+.seg 134,3495
+.globl 143,3855
+ThreadRoot:ThreadRoot144,3874
+.globl 170,4718
+SWITCH:SWITCH171,4732
+ThreadRoot:ThreadRoot200,5166
+SWITCH:SWITCH223,5453
+ThreadRoot:ThreadRoot391,8781
+SWITCH:SWITCH421,9498
+ThreadRoot:ThreadRoot471,11314
+SWITCH:SWITCH507,12161
+
+bin/coff.h,1296
+struct filehdr 5,72
+        unsigned short  f_magic;6,89
+        unsigned short  f_nscns;7,148
+        int             f_timdat;8,213
+        int             f_symptr;9,277
+        int             f_nsyms;10,355
+        unsigned short  f_opthdr;11,422
+        unsigned short  f_flags;12,489
+#define  MIPSELMAGIC 15,551
+#define OMAGIC 17,583
+#define SOMAGIC 18,604
+typedef struct aouthdr 20,628
+        short   magic;21,653
+        short   vstamp;22,728
+        int     tsize;23,803
+        int     dsize;24,878
+        int     bsize;25,953
+        int     entry;26,1028
+        int     text_start;27,1103
+        int     data_start;28,1178
+        int     bss_start;29,1253
+        int     gprmask;30,1328
+        int     cprmask[cprmask31,1403
+        int     gp_value;32,1478
+      } AOUTHDR;33,1553
+#define AOUTHSZ 34,1570
+struct scnhdr 37,1605
+        char            s_name[s_name38,1621
+        int             s_paddr;39,1680
+        int             s_vaddr;40,1759
+        int             s_size;41,1821
+        int             s_scnptr;42,1880
+        int             s_relptr;43,1959
+        int             s_lnnoptr;44,2028
+        unsigned short  s_nreloc;45,2099
+        unsigned short  s_nlnno;46,2174
+        int             s_flags;47,2251
+
+bin/encode.h,1691
+#define I_SPECIAL	12,254
+#define I_BCOND	13,276
+#define I_J	14,297
+#define I_JAL	15,314
+#define I_BEQ	16,333
+#define I_BNE	17,352
+#define I_BLEZ	18,371
+#define I_BGTZ	19,391
+#define I_ADDI	20,411
+#define I_ADDIU	21,431
+#define I_SLTI	22,452
+#define I_SLTIU	23,472
+#define I_ANDI	24,493
+#define I_ORI	25,513
+#define I_XORI	26,532
+#define I_LUI	27,552
+#define I_COP0	28,571
+#define I_COP1	29,591
+#define I_COP2	30,611
+#define I_COP3	31,631
+#define I_LB	33,652
+#define I_LH	34,670
+#define I_LWL	35,688
+#define I_LW	36,707
+#define I_LBU	37,725
+#define I_LHU	38,744
+#define I_LWR	39,763
+#define I_SB	41,783
+#define I_SH	42,801
+#define I_SWL	43,819
+#define I_SW	44,838
+#define I_SWR	46,857
+#define I_LWC0	48,877
+#define I_LWC1	49,897
+#define I_LWC2	50,917
+#define I_LWC3	51,937
+#define I_SWC0	53,958
+#define I_SWC1	54,978
+#define I_SWC2	55,998
+#define I_SWC3	56,1018
+#define I_SLL	60,1062
+#define I_SRL	62,1082
+#define I_SRA	63,1101
+#define I_SLLV	64,1120
+#define I_SRLV	66,1141
+#define I_SRAV	67,1161
+#define I_JR	68,1181
+#define I_JALR	69,1199
+#define I_SYSCALL	71,1220
+#define I_BREAK	72,1242
+#define I_MFHI	74,1264
+#define I_MTHI	75,1284
+#define I_MFLO	76,1304
+#define I_MTLO	77,1324
+#define I_MULT	79,1345
+#define I_MULTU	80,1365
+#define I_DIV	81,1386
+#define I_DIVU	82,1405
+#define I_ADD	84,1426
+#define I_ADDU	85,1445
+#define I_SUB	86,1465
+#define I_SUBU	87,1484
+#define I_AND	88,1504
+#define I_OR	89,1523
+#define I_XOR	90,1541
+#define I_NOR	91,1560
+#define I_SLT	93,1580
+#define I_SLTU	94,1599
+#define I_BLTZ	99,1642
+#define I_BGEZ	100,1662
+#define I_BLTZAL	102,1683
+#define I_BGEZAL	103,1704
+#define I_NOP 107,1752
+
+bin/instr.h,189
+#define rd(11,258
+#define rt(12,294
+#define rs(13,330
+#define shamt(14,366
+#define immed(15,403
+#define off26(17,467
+#define top4(18,514
+#define off16(19,561
+#define extend(21,600
+
+bin/int.h,301
+#define MEMSIZE 11,233
+#define memoffset 12,257
+#define amark(15,330
+#define imark(16,349
+#define ifetch(18,369
+#define fetch(19,438
+#define sfetch(20,506
+#define usfetch(21,577
+#define cfetch(22,657
+#define ucfetch(23,727
+#define store(25,807
+#define sstore(27,889
+#define cstore(29,974
+
+bin/noff.h,306
+#define NOFFMAGIC	8,203
+typedef struct segment 12,300
+  int virtualAddr;13,325
+  int inFileAddr;14,390
+  int size;15,448
+} Segment;16,484
+typedef struct noffHeader 18,496
+   int noffMagic;19,524
+   Segment code;20,569
+   Segment initData;21,618
+   Segment uninitData;22,671
+} NoffHeader;25,773
+
+filesys/directory.h,360
+#define DIRECTORY_H18,637
+#define FileNameMaxLen 22,681
+class DirectoryEntry 32,1073
+    bool inUse;DirectoryEntry::inUse34,1106
+    int sector;DirectoryEntry::sector35,1160
+    char name[DirectoryEntry::name37,1248
+class Directory:Directory51,1777
+    int tableSize;Directory::tableSize75,2629
+    DirectoryEntry *table;Directory::table76,2681
+
+filesys/filehdr.h,256
+#define FILEHDR_H15,481
+#define NumDirect 20,539
+#define MaxFileSize 21,605
+class FileHeader 38,1376
+    int numBytes;FileHeader::numBytes60,2095
+    int numSectors;FileHeader::numSectors61,2146
+    int dataSectors[FileHeader::dataSectors62,2206
+
+filesys/filesys.h,395
+#define FS_H36,1736
+class FileSystem:FileSystem44,1949
+    FileSystem(FileSystem::FileSystem46,1991
+    bool Create(FileSystem::Create48,2039
+    OpenFile* Open(FileSystem::Open57,2242
+    bool Remove(FileSystem::Remove64,2428
+class FileSystem:FileSystem69,2514
+   OpenFile* freeMapFile;FileSystem::freeMapFile90,3187
+   OpenFile* directoryFile;FileSystem::directoryFile92,3276
+
+filesys/openfile.h,565
+#define OPENFILE_H21,889
+class OpenFile:OpenFile29,1099
+    OpenFile(OpenFile::OpenFile31,1139
+    ~OpenFile(OpenFile::~OpenFile32,1209
+    int ReadAt(OpenFile::ReadAt34,1263
+    int WriteAt(OpenFile::WriteAt38,1411
+    int Read(OpenFile::Read43,1576
+    int Write(OpenFile::Write48,1727
+    int Length(OpenFile::Length54,1892
+    int file;OpenFile::file57,1974
+    int currentOffset;OpenFile::currentOffset58,1988
+class OpenFile:OpenFile64,2051
+    FileHeader *hdr;OpenFile::hdr91,3032
+    int seekPosition;OpenFile::seekPosition92,3080
+
+filesys/synchdisk.h,196
+#define SYNCHDISK_H12,351
+class SynchDisk:SynchDisk27,980
+    Disk *disk;SynchDisk::disk46,1682
+    Semaphore *semaphore;SynchDisk::semaphore47,1722
+    Lock *lock;SynchDisk::lock49,1822
+
+machine/console.h,473
+#define CONSOLE_H24,1027
+class Console:Console41,1620
+    int readFileNo;Console::readFileNo66,2547
+    int writeFileNo;Console::writeFileNo67,2606
+    VoidFunctionPtr writeHandler;Console::writeHandler68,2664
+    VoidFunctionPtr readHandler;Console::readHandler70,2768
+    void *handlerArg;Console::handlerArg72,2883
+    bool putBusy;Console::putBusy74,2967
+    int incoming;Console::incoming76,3071
+    static int stdin_busy;Console::stdin_busy79,3201
+
+machine/disk.h,426
+#define DISK_H18,725
+#define SectorSize 49,2203
+#define SectorsPerTrack 50,2263
+#define NumTracks 51,2328
+#define NumSectors 52,2380
+class Disk:Disk55,2468
+    int fileno;Disk::fileno79,3314
+    VoidFunctionPtr handler;Disk::handler80,3373
+    void *handlerArg;Disk::handlerArg82,3479
+    bool active;Disk::active83,3537
+    int lastSector;Disk::lastSector84,3597
+    int bufferInit;Disk::bufferInit85,3649
+
+machine/interrupt.h,1327
+#define INTERRUPT_H36,1464
+enum IntStatus 42,1585
+enum IntStatus { IntOff,42,1585
+enum IntStatus { IntOff, IntOn 42,1585
+enum MachineStatus 47,1780
+enum MachineStatus {IdleMode,IdleMode47,1780
+enum MachineStatus {IdleMode, SystemMode,47,1780
+enum MachineStatus {IdleMode, SystemMode, UserMode}UserMode47,1780
+enum IntType 52,2007
+enum IntType { TimerInt,52,2007
+enum IntType { TimerInt, DiskInt,52,2007
+enum IntType { TimerInt, DiskInt, ConsoleWriteInt,52,2007
+enum IntType { TimerInt, DiskInt, ConsoleWriteInt, ConsoleReadInt,52,2007
+				NetworkSendInt,53,2075
+				NetworkSendInt, NetworkRecvInt}NetworkRecvInt53,2075
+class PendingInterrupt 59,2286
+    VoidFunctionPtr handler;PendingInterrupt::handler66,2484
+    void *arg;PendingInterrupt::arg68,2607
+    long long when;PendingInterrupt::when69,2672
+    IntType type;PendingInterrupt::type70,2735
+class Interrupt:Interrupt78,3005
+    IntStatus getLevel(Interrupt::getLevel87,3314
+    MachineStatus getStatus(Interrupt::getStatus99,3693
+    void setStatus(Interrupt::setStatus100,3764
+    IntStatus level;Interrupt::level117,4381
+    List *pending;Interrupt::pending118,4442
+    bool inHandler;Interrupt::inHandler120,4528
+    bool yieldOnReturn;Interrupt::yieldOnReturn121,4596
+    MachineStatus status;Interrupt::status123,4701
+
+machine/machine.h,1541
+#define MACHINE_H22,877
+#define PageSize 31,1045
+#define NumPhysPages 35,1159
+#define MemorySize 36,1218
+#define TLBSize	37,1264
+enum ExceptionType 39,1321
+enum ExceptionType { NoException,39,1321
+		     SyscallException,40,1383
+		     PageFaultException,41,1450
+		     ReadOnlyException,42,1510
+		     BusErrorException,44,1599
+		     AddressErrorException,46,1697
+		     OverflowException,49,1826
+		     IllegalInstrException,50,1891
+		     NumExceptionTypes52,1965
+#define StackReg	60,2232
+#define RetAddrReg	61,2276
+#define NumGPRegs	62,2342
+#define HiReg	63,2403
+#define LoReg	64,2464
+#define PCReg	65,2482
+#define NextPCReg	66,2527
+#define PrevPCReg	67,2592
+#define LoadReg	68,2657
+#define LoadValueReg 69,2719
+#define BadVAddrReg	70,2789
+#define NumTotalRegs 72,2860
+class Instruction 81,3093
+    unsigned int value;Instruction::value85,3198
+    unsigned char opCode;Instruction::opCode89,3409
+    unsigned char rs,Instruction::rs91,3493
+    unsigned char rs, rt,Instruction::rt91,3493
+    unsigned char rs, rt, rd;Instruction::rd91,3493
+    unsigned int extra;Instruction::extra94,3647
+class Machine:Machine110,4306
+    char *mainMemory;Machine::mainMemory159,6076
+    int registers[Machine::registers161,6179
+    TranslationEntry *tlb;Machine::tlb182,7239
+    TranslationEntry *pageTable;Machine::pageTable185,7348
+    unsigned int pageTableSize;Machine::pageTableSize186,7381
+    bool singleStep;Machine::singleStep189,7425
+    int runUntilTime;Machine::runUntilTime191,7518
+
+machine/mipssim.h,2229
+#define MIPSSIM_H11,364
+#define OP_ADD	25,728
+#define OP_ADDI	26,746
+#define OP_ADDIU	27,765
+#define OP_ADDU	28,784
+#define OP_AND	29,803
+#define OP_ANDI	30,821
+#define OP_BEQ	31,840
+#define OP_BGEZ	32,858
+#define OP_BGEZAL	33,877
+#define OP_BGTZ	34,897
+#define OP_BLEZ	35,917
+#define OP_BLTZ	36,937
+#define OP_BLTZAL	37,957
+#define OP_BNE	38,978
+#define OP_DIV	40,998
+#define OP_DIVU	41,1017
+#define OP_J	42,1037
+#define OP_JAL	43,1054
+#define OP_JALR	44,1073
+#define OP_JR	45,1093
+#define OP_LB	46,1111
+#define OP_LBU	47,1129
+#define OP_LH	48,1148
+#define OP_LHU	49,1166
+#define OP_LUI	50,1185
+#define OP_LW	51,1204
+#define OP_LWL	52,1222
+#define OP_LWR	53,1241
+#define OP_MFHI	55,1261
+#define OP_MFLO	56,1281
+#define OP_MTHI	58,1302
+#define OP_MTLO	59,1322
+#define OP_MULT	60,1342
+#define OP_MULTU	61,1362
+#define OP_NOR	62,1382
+#define OP_OR	63,1401
+#define OP_ORI	64,1419
+#define OP_RFE	65,1438
+#define OP_SB	66,1457
+#define OP_SH	67,1475
+#define OP_SLL	68,1493
+#define OP_SLLV	69,1512
+#define OP_SLT	70,1532
+#define OP_SLTI	71,1551
+#define OP_SLTIU	72,1571
+#define OP_SLTU	73,1591
+#define OP_SRA	74,1611
+#define OP_SRAV	75,1630
+#define OP_SRL	76,1650
+#define OP_SRLV	77,1669
+#define OP_SUB	78,1689
+#define OP_SUBU	79,1708
+#define OP_SW	80,1728
+#define OP_SWL	81,1746
+#define OP_SWR	82,1765
+#define OP_XOR	83,1784
+#define OP_XORI	84,1803
+#define OP_SYSCALL	85,1823
+#define OP_UNIMP	86,1845
+#define OP_RES	87,1865
+#define MaxOpcode	88,1884
+#define IndexToAddr(94,1944
+#define SIGN_BIT	96,1979
+#define R31	97,2007
+#define SPECIAL 105,2223
+#define BCOND	106,2243
+#define IFMT 108,2262
+#define JFMT 109,2277
+#define RFMT 110,2292
+struct OpInfo 112,2308
+    int opCode;113,2324
+    int format;114,2367
+static OpInfo opTable[opTable117,2429
+static int specialTable[specialTable141,3703
+enum RegType 155,4360
+enum RegType { NONE,155,4360
+enum RegType { NONE, RS,155,4360
+enum RegType { NONE, RS, RT,155,4360
+enum RegType { NONE, RS, RT, RD,155,4360
+enum RegType { NONE, RS, RT, RD, EXTRA 155,4360
+struct OpString 157,4404
+    const char *string;string158,4422
+    RegType args[args159,4480
+static struct OpString opStrings[opStrings162,4505
+
+machine/network.h,864
+#define NETWORK_H16,608
+typedef int NetworkAddress;23,779
+class PacketHeader 31,1106
+    NetworkAddress to;PacketHeader::to33,1137
+    NetworkAddress from;PacketHeader::from34,1187
+    unsigned length;PacketHeader::length35,1233
+#define MaxWireSize 40,1389
+#define MaxPacketSize 41,1459
+class Network 55,2134
+    NetworkAddress ident;Network::ident84,3253
+    double chanceToWork;Network::chanceToWork85,3313
+    int sock;Network::sock86,3375
+    char sockName[Network::sockName87,3434
+    VoidFunctionPtr writeHandler;Network::writeHandler88,3500
+    VoidFunctionPtr readHandler;Network::readHandler90,3607
+    void *handlerArg;Network::handlerArg92,3703
+    bool sendBusy;Network::sendBusy94,3806
+    bool packetAvail;Network::packetAvail95,3851
+    PacketHeader inHdr;Network::inHdr97,3935
+    char inbox[Network::inbox98,3996
+
+machine/stats.h,895
+#define STATS_H12,385
+class Statistics 22,668
+  long long totalTicks;Statistics::totalTicks32,1106
+  long long idleTicks;Statistics::idleTicks33,1165
+  long long systemTicks;Statistics::systemTicks34,1234
+  long long userTicks;Statistics::userTicks35,1295
+    int numDiskReads;Statistics::numDiskReads41,1454
+    int numDiskWrites;Statistics::numDiskWrites42,1509
+    int numConsoleCharsRead;Statistics::numConsoleCharsRead43,1566
+    int numConsoleCharsWritten;Statistics::numConsoleCharsWritten44,1642
+    int numPageFaults;Statistics::numPageFaults45,1721
+    int numPacketsSent;Statistics::numPacketsSent46,1785
+    int numPacketsRecvd;Statistics::numPacketsRecvd47,1853
+#define UserTick 62,2383
+#define SystemTick 63,2447
+#define RotationTime 64,2515
+#define SeekTime 65,2582
+#define ConsoleTime 66,2650
+#define NetworkTime 67,2714
+#define TimerTicks 68,2780
+
+machine/sysdep.h,24
+#define SYSDEP_H12,482
+
+machine/timer.h,208
+#define TIMER_H21,816
+class Timer 27,928
+    ~Timer(Timer::~Timer32,1122
+    bool randomize;Timer::randomize43,1420
+    VoidFunctionPtr handler;Timer::handler44,1489
+    void *arg;Timer::arg45,1546
+
+machine/translate.h,385
+#define TLB_H19,704
+class TranslationEntry 30,1085
+    unsigned int virtualPage;TranslationEntry::virtualPage32,1120
+    unsigned int physicalPage;TranslationEntry::physicalPage34,1218
+    bool valid;TranslationEntry::valid36,1330
+    bool readOnly;TranslationEntry::readOnly38,1468
+    bool use;TranslationEntry::use40,1584
+    bool dirty;TranslationEntry::dirty42,1696
+
+machine/valgrind.h,107
+#define VALGRIND_H9,271
+#define VALGRIND_STACK_REGISTER(16,383
+#define VALGRIND_STACK_DEREGISTER(20,471
+
+network/post.h,912
+#define POST_H29,1280
+typedef int MailBoxAddress;36,1478
+class MailHeader 42,1671
+    MailBoxAddress to;MailHeader::to44,1700
+    MailBoxAddress from;MailHeader::from45,1748
+    unsigned length;MailHeader::length46,1797
+#define MaxMailSize 53,2009
+class Mail 62,2267
+     PacketHeader pktHdr;Mail::pktHdr68,2441
+     MailHeader mailHdr;Mail::mailHdr69,2497
+     char data[Mail::data70,2555
+class MailBox:MailBox78,2855
+    SynchList *messages;MailBox::messages90,3309
+class PostOffice:PostOffice102,3825
+    Network *network;PostOffice::network132,4963
+    NetworkAddress netAddr;PostOffice::netAddr133,5017
+    MailBox *boxes;PostOffice::boxes134,5080
+    int numBoxes;PostOffice::numBoxes135,5146
+    Semaphore *messageAvailable;PostOffice::messageAvailable136,5189
+    Semaphore *messageSent;PostOffice::messageSent137,5267
+    Lock *sendLock;PostOffice::sendLock138,5344
+
+threads/bool.h,66
+#define _bool_h 7,198
+#define TRUE 11,239
+#define FALSE 12,257
+
+threads/copyright.h,48
+static const char *copyright copyright23,1097
+
+threads/list.h,309
+#define LIST_H14,537
+class ListElement:ListElement27,959
+    ListElement *next;ListElement::next32,1084
+    long long key;ListElement::key34,1166
+    void *item;ListElement::item35,1218
+class List:List44,1526
+      ListElement * first;List::first64,2214
+    ListElement *last;List::last65,2284
+
+threads/scheduler.h,155
+#define SCHEDULER_H10,372
+class Scheduler:Scheduler20,664
+    List * readyList;Scheduler::readyList34,1176
+    bool halted;Scheduler::halted36,1269
+
+threads/switch.h,3502
+#define SWITCH_H18,561
+#define SP 28,780
+#define S0 29,793
+#define S1 30,806
+#define S2 31,819
+#define S3 32,833
+#define S4 33,847
+#define S5 34,861
+#define S6 35,875
+#define S7 36,889
+#define FP 37,903
+#define PC 38,917
+#define InitialPC	50,1412
+#define InitialArg	51,1433
+#define WhenDonePC	52,1455
+#define StartupPC	53,1477
+#define PCState	55,1499
+#define FPState	56,1525
+#define InitialPCState	57,1551
+#define InitialArgState	58,1583
+#define WhenDonePCState	59,1616
+#define StartupPCState	60,1649
+#define I0 67,1802
+#define I1 68,1815
+#define I2 69,1828
+#define I3 70,1842
+#define I4 71,1856
+#define I5 72,1870
+#define I6 73,1884
+#define I7 74,1898
+#define FP 77,1952
+#define PC 78,1966
+#define InitialPC 81,2033
+#define InitialArg 82,2061
+#define WhenDonePC 83,2089
+#define StartupPC 84,2117
+#define PCState 86,2146
+#define InitialPCState 87,2179
+#define InitialArgState 88,2212
+#define WhenDonePCState 89,2245
+#define StartupPCState 90,2278
+#define   SP 96,2432
+#define   S0 97,2449
+#define   S1 98,2466
+#define   S2 99,2483
+#define   S3 100,2501
+#define   S4 101,2519
+#define   S5 102,2537
+#define   S6 103,2555
+#define   S7 104,2573
+#define   S8 105,2591
+#define   S9 106,2609
+#define   S10 107,2627
+#define   S11 108,2645
+#define   S12 109,2663
+#define   S13 110,2681
+#define   S14 111,2699
+#define   S15 112,2717
+#define   PC 113,2735
+#define InitialPC 116,2806
+#define InitialArg 117,2843
+#define WhenDonePC 118,2871
+#define StartupPC 119,2899
+#define PCState 121,2928
+#define InitialPCState 122,2961
+#define InitialArgState 123,2994
+#define WhenDonePCState 124,3027
+#define StartupPCState 125,3060
+#define   R0 130,3132
+#define   R1 131,3149
+#define   R2 132,3218
+#define   R3 133,3235
+#define   R4 134,3253
+#define   R5 135,3271
+#define   R6 136,3289
+#define   R7 137,3307
+#define   R8 138,3325
+#define   R9 139,3343
+#define   R10 140,3361
+#define   R11 141,3379
+#define   R12 142,3397
+#define   R13 143,3415
+#define   R14 144,3433
+#define   R15 145,3451
+#define   R16 146,3469
+#define   R17 147,3487
+#define   R18 148,3505
+#define InitialPC 151,3576
+#define InitialArg 152,3604
+#define WhenDonePC 153,3632
+#define StartupPC 154,3660
+#define PCState 157,3736
+#define InitialPCState 158,3762
+#define InitialArgState 159,3788
+#define WhenDonePCState 160,3814
+#define StartupPCState 161,3840
+#define _ESP 168,3980
+#define _EAX 169,3999
+#define _EBX 170,4018
+#define _ECX 171,4037
+#define _EDX 172,4057
+#define _EBP 173,4077
+#define _ESI 174,4097
+#define _EDI 175,4117
+#define _PC 176,4137
+#define PCState 179,4219
+#define FPState 180,4253
+#define InitialPCState 181,4288
+#define InitialArgState 182,4323
+#define WhenDonePCState 183,4358
+#define StartupPCState 184,4393
+#define InitialPC 186,4429
+#define InitialArg 187,4458
+#define WhenDonePC 188,4487
+#define StartupPC 189,4516
+#define _RSP 195,4648
+#define _RAX 196,4667
+#define _RBX 197,4686
+#define _RCX 198,4706
+#define _RDX 199,4726
+#define _RBP 200,4746
+#define _RSI 201,4766
+#define _RDI 202,4786
+#define _R12 203,4806
+#define _R13 204,4826
+#define _R14 205,4846
+#define _R15 206,4866
+#define _PC 207,4886
+#define PCState 210,4968
+#define FPState 211,5002
+#define InitialPCState 212,5037
+#define InitialArgState 213,5072
+#define WhenDonePCState 214,5107
+#define StartupPCState 215,5142
+#define InitialPC 217,5178
+#define InitialArg 218,5207
+#define WhenDonePC 219,5236
+#define StartupPC 220,5265
+
+threads/synch.h,487
+#define SYNCH_H18,726
+class Semaphore:Semaphore39,1514
+    const char *getName Semaphore::getName44,1679
+    const char *name;Semaphore::name53,1876
+    int value;Semaphore::value54,1923
+    List *queue;Semaphore::queue55,1972
+class Lock:Lock70,2561
+    const char *getName Lock::getName75,2697
+    const char *name;Lock::name89,3073
+class Condition:Condition125,4790
+    const char *getName Condition::getName131,4971
+    const char *name;Condition::name145,5389
+
+threads/synchlist.h,199
+#define SYNCHLIST_H12,402
+class SynchList:SynchList24,761
+      List * list;SynchList::list38,1239
+    Lock *lock;SynchList::lock39,1286
+    Condition *listEmpty;SynchList::listEmpty40,1351
+
+threads/system.h,55
+#define SYSTEM_H9,301
+#define MAX_STRING_SIZE 10,318
+
+threads/thread.h,838
+#define THREAD_H38,1670
+#define MachineStateSize 51,1992
+#define StackSize	56,2114
+enum ThreadStatus60,2173
+{ JUST_CREATED,61,2191
+{ JUST_CREATED, RUNNING,61,2191
+{ JUST_CREATED, RUNNING, READY,61,2191
+{ JUST_CREATED, RUNNING, READY, BLOCKED 61,2191
+class Thread:Thread77,2798
+    unsigned long *stackTop;Thread::stackTop82,2959
+    unsigned long machineState[Thread::machineState83,3018
+    void setStatus Thread::setStatus103,3726
+    const char *getName Thread::getName107,3789
+    void Print Thread::Print111,3844
+    unsigned long *stack;Thread::stack119,3974
+    unsigned int valgrind_id;Thread::valgrind_id122,4104
+    ThreadStatus status;Thread::status123,4163
+    const char *name;Thread::name124,4217
+    int userRegisters[Thread::userRegisters135,4569
+    AddrSpace *space;Thread::space141,4779
+
+threads/utility.h,350
+#define UTILITY_H24,956
+#define min(35,1149
+#define max(36,1193
+#define divRoundDown(39,1277
+#define divRoundUp(40,1316
+typedef void (*VoidFunctionPtr)VoidFunctionPtr51,1726
+typedef void (*VoidNoArgFunctionPtr)VoidNoArgFunctionPtr52,1771
+#define ASSERT(76,2643
+class dontcopythis 88,3321
+		dontcopythis(dontcopythis::dontcopythis93,3449
+
+userprog/addrspace.h,216
+#define ADDRSPACE_H14,529
+#define UserStacksAreaSize	20,618
+class AddrSpace:AddrSpace22,683
+      TranslationEntry * pageTable;AddrSpace::pageTable37,1156
+    unsigned int numPages;AddrSpace::numPages39,1248
+
+userprog/bitmap.h,180
+#define BITMAP_H16,580
+class BitMap:BitMap30,1009
+    int numBits;BitMap::numBits53,1837
+    int numWords;BitMap::numWords54,1887
+    unsigned int *map;BitMap::map58,2040
+
+userprog/progtest.h,26
+#define PROGTEST_H12,428
+
+userprog/synchconsole.h,117
+#define SYNCHCONSOLE_H4,39
+class SynchConsole:SynchConsole10,129
+		Console *console;SynchConsole::console23,556
+
+userprog/syscall.h,602
+#define SYSCALLS_H14,493
+#define USER_START_ADDRESS 18,537
+#define SC_Halt	23,675
+#define SC_Exit	24,694
+#define SC_Exec	25,713
+#define SC_Join	26,732
+#define SC_Create	27,751
+#define SC_Open	28,771
+#define SC_Read	29,790
+#define SC_Write	30,809
+#define SC_Close	31,828
+#define SC_Fork	32,847
+#define SC_Yield	33,866
+#define SC_PutChar 34,886
+#define SC_PutString 35,913
+#define SC_GetChar 36,940
+#define SC_GetString 37,963
+void Halt 56,1583
+void Exit 62,1760
+typedef int SpaceId;65,1888
+typedef int OpenFileId;88,2592
+#define ConsoleInput	96,2861
+#define ConsoleOutput	97,2884

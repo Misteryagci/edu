@@ -49,7 +49,7 @@ StartProcess (char *filename)
 // Data structures needed for the console test.  Threads making
 // I/O requests wait on a Semaphore to delay until the I/O completes.
 
-static Console *console;
+static Console *console = NULL;
 static Semaphore *readAvail;
 static Semaphore *writeDone;
 
@@ -85,7 +85,8 @@ ConsoleTest (const char *in, const char *out)
     
     readAvail = new Semaphore ("read avail", 0);
     writeDone = new Semaphore ("write done", 0);
-    console = new Console (in, out, ReadAvailHandler, WriteDoneHandler, 0);
+
+    console = NULL;
 
     for (;;)
       {
@@ -93,21 +94,22 @@ ConsoleTest (const char *in, const char *out)
 	  ch = console->GetChar ();
 	 if (ch != '\n') {
 	  console->PutChar('<'); //On ajoute < avant le x (Action II.3)
- writeDone->P ();
+ 	writeDone->P ();
 	  console->PutChar (ch);	//echo it!
- writeDone->P ();
+ 	writeDone->P ();
 	  console->PutChar('>'); //On ajoute >après le  x (Action II.3)
-	  writeDone->P ();	// wait for write to finish
+	writeDone->P ();	// wait for write to finish
 	}
 	else
 	{
 	  console->PutChar('\n'); //On fait un retour à la ligne (Action II.3)
 	  writeDone->P ();	// wait for write to finish
 	}	  
-	if (ch == 'q') {
-	      printf (" Au revoir\n"); //Action II.1
-	      break;		// if q, quit
-	  }
+	if ((ch == 'q') || (ch == (EOF))) 
+	{
+	    printf (" Au revoir\n"); //Action II.1
+	   	break;		// if q, quit
+	}
       }
     delete console;
     delete readAvail;
@@ -118,26 +120,32 @@ ConsoleTest (const char *in, const char *out)
 void
 SynchConsoleTest (const char *in, const char *out)
 {
-char ch;
-
-SynchConsole *ts = new SynchConsole(in, out);
+	char ch;
 
 
-while ((ch = ts->SynchGetChar()) != EOF)
-{
-	if (ch != '\n')
+
+
+	while ((ch = synchconsole->SynchGetChar()) != EOF)
 	{
-		ts->SynchPutChar('<');
-		ts->SynchPutChar(ch);
-		ts->SynchPutChar('>');
-	}
-	else
-		ts->SynchPutChar('\n');
+		if (ch != '\n')
+		{
+			synchconsole->SynchPutChar('<');
+			synchconsole->SynchPutChar(ch);
+			synchconsole->SynchPutChar('>');
+		}
+		else
+			synchconsole->SynchPutChar('\n');
 
-	
+		if ((ch == 'q')||(ch== (EOF))) {
+	      		printf ("Au revoir\n");		// if q, quit
+	       		exit(1);
+	       	break;
+	       }
+	}
+
+	fprintf(stderr, "EOF detected in SynchConsole!\n");
 }
-fprintf(stderr, "EOF detected in SynchConsole!\n");
-}
+
 #endif //CHANGED
 
 

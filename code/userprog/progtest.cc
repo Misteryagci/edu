@@ -49,7 +49,7 @@ StartProcess (char *filename)
 // Data structures needed for the console test.  Threads making
 // I/O requests wait on a Semaphore to delay until the I/O completes.
 
-static Console *console;
+static Console *console = NULL;
 static Semaphore *readAvail;
 static Semaphore *writeDone;
 
@@ -85,7 +85,8 @@ ConsoleTest (const char *in, const char *out)
     
     readAvail = new Semaphore ("read avail", 0);
     writeDone = new Semaphore ("write done", 0);
-    console = new Console (in, out, ReadAvailHandler, WriteDoneHandler, 0);
+
+    console = NULL;
 
     for (;;)
       {
@@ -121,7 +122,7 @@ SynchConsoleTest (const char *in, const char *out)
 {
 	char ch;
 
-	//SynchConsole *ts = new SynchConsole(in, out);
+
 
 
 	while ((ch = synchconsole->SynchGetChar()) != EOF)
@@ -134,6 +135,12 @@ SynchConsoleTest (const char *in, const char *out)
 		}
 		else
 			synchconsole->SynchPutChar('\n');
+
+		if ((ch == 'q')||(ch== (EOF))) {
+	      		printf ("Au revoir\n");		// if q, quit
+	       		exit(1);
+	       	break;
+	       }
 	}
 
 	fprintf(stderr, "EOF detected in SynchConsole!\n");
