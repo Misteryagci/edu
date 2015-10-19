@@ -1,0 +1,10 @@
+Avancements pour le devoir 2
+
+Action 1.1 -> Pas répondu, il faut le répondre pour le rapoort
+Action 1.2 -> ./nachos -s -d a -x ../test/putchar est lancé depuis le repértoire 				userprog. Il n'y a pas d'erreur. Dans les fichiers userprog/progtest				.cc et userprog/addrspace.cc les parties correspondant à l'action 				  1.2 à repérez est commenté avec //Action 1.2
+
+Action 1.3 -> Des appels systèmes int ThreadCreate(void f(void *arg), void *arg); 				et void ThreadExit(void); sont ajoutés dans le fichier userprog/				  syscall.h, et puis des modifications ont été fait dans le fichier 		      test/start.S et aussi dans le fichier userprog/excepion.cc.          
+			  Le fichier userprog/userthread.cc est créé pour la fonction do_ThreadExit (marqué dans l'énoncé, juqte avant Action 1.3). La question n'est pas répondu, à répondre pour le rapport.
+
+Action 1.4 -> Ajout de #include "userthread.h" dans le fichier 
+			  userprog/exception.cc. userthread.o est ajouté dans le USERPROG_O de Makefile.common pour que le make tiens compte le fichier userthread.cc Déclaration extern int do_ThreadCreate(int f,int arg); est placé dans le fichier userprog/userthread.h La définition de la fonction do_ThreadCreate n'est pas fini (voir le fichier userprog/userthread.cc)
